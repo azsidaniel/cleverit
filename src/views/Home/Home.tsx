@@ -1,5 +1,6 @@
 import { type FC, useEffect, useState } from 'react';
 import { Movies } from '../../components/Movies/Movies';
+import { NoDataMessage } from '../../components/NoDataMessage/NoDataMessage';
 
 import { Pagination } from '../../components/Pagination/Pagination';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
@@ -73,7 +74,9 @@ export const Home: FC<undefined> = () => {
       <Subtitle subtitle="Discover the perfect movie to enjoy with yout popcorn &#127871;" />
       <SearchInput setSearchInput={setSearchInput} />
       <MoviesContainer>
-        {!filteredMovies ? null : (
+        {!filteredMovies.length ? (
+          <NoDataMessage />
+        ) : (
           <Movies
             filteredMovies={filteredMovies.slice(
               (page - 1) * itensPerPage,
