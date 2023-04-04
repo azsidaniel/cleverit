@@ -32,10 +32,11 @@ export const MoviesContainer: FC<MoviesContainerProps> = ({
             </span>
           </DescriptionContainer>
           <TitleAuthorContainer>
-            <span>
-              {movie.title} ({movie.year})
-            </span>
-            <span>{movie.director}</span>
+            <span>{movie.title}</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>{movie.director}</span>
+              <span>{movie.year}</span>
+            </div>
           </TitleAuthorContainer>
         </MoviesContainerStyled>
       );
