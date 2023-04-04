@@ -6,3 +6,11 @@ export const HomeStyled = styled.div`
   flex: 1;
   height: 100%;
 `;
+
+export const MoviesContainer = styled.div`
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  position: relative;
+`;

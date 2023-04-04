@@ -1,13 +1,15 @@
 import { FC } from 'react';
-import { Movie } from '../../views/Home/Home';
+
 import {
   DescriptionContainer,
+  DescriptionText,
+  DirectorYearContainer,
   MovieImage,
-  MoviesContainerStyled,
-  TitleAuthorContainer,
-} from './MoviesContainer.styled';
+  MoviesBottomContainer,
+  MoviesStyled,
+} from './Movies.styled';
 
-type MoviesContainerProps = {
+type MoviesProps = {
   filteredMovies: {
     coverImage: string;
     description: string;
@@ -18,27 +20,23 @@ type MoviesContainerProps = {
   }[];
 };
 
-export const MoviesContainer: FC<MoviesContainerProps> = ({
-  filteredMovies,
-}) => {
+export const Movies: FC<MoviesProps> = ({ filteredMovies }) => {
   const renderMovies = () => {
     return filteredMovies.map(movie => {
       return (
-        <MoviesContainerStyled key={movie.id}>
+        <MoviesStyled key={movie.id}>
           <MovieImage src={movie.coverImage} />
           <DescriptionContainer>
-            <span style={{ height: '100%', display: 'flex' }}>
-              {movie.description}
-            </span>
+            <DescriptionText>{movie.description}</DescriptionText>
           </DescriptionContainer>
-          <TitleAuthorContainer>
+          <MoviesBottomContainer>
             <span>{movie.title}</span>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <DirectorYearContainer>
               <span>{movie.director}</span>
               <span>{movie.year}</span>
-            </div>
-          </TitleAuthorContainer>
-        </MoviesContainerStyled>
+            </DirectorYearContainer>
+          </MoviesBottomContainer>
+        </MoviesStyled>
       );
     });
   };
